@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1><a href="/catalog">Каталог</a></h1>
+        </div>
+
+        <div class="sort-block">
+            <font size="4">Сортировать по:</font>&emsp;
+            <font size="4"><a href="/catalog?sort=name">названию</a></font>&emsp;
+            <font size="4"><a href="/catalog?sort=min_price">начиная с дешевых</a></font>&emsp;
+            <font size="4"><a href="/catalog?sort=max_price">начиная с дорогих</a></font>&emsp;
+        </div>
+
+        <div class="content">
+            {% for file in files %}
+                <div><font size="6"><a href="/catalog/{{ file.slug }}">{{file.name}}</a></font></div>
+                <div><b>Стоимость: {{file.price}}</b></div>
+                <img src={{file.image}} width="150" height="300">
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

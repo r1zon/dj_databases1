@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Телефон{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1>Телефон</h1>
+        </div>
+        <img class="content">
+            <div><font size="6"><b>{{product.name}}</b></font></div>
+            <div><font size="4"><b>Стоимость: {{product.price}}</b></font></div>
+            <img src={{product.image}} width="150" height="300">
+            <div><font size="4"><b>Дата производства: {{product.release_date}}</b></font></div>
+            {% if product.lte_exists == True %}
+                <div><font size="4"><b>Наличие LTE: есть</b></font></div>
+            {% elif product.lte_exists == False %}
+                <div><font size="4"><b>Наличие LTE: нет</b></font></div>
+            {% endif %}
+            <br></br>
+            <a href="{% url 'show_catalog' %}"><img src = "{% static '93634.png' %}" width="100" height="100"></a>
+        </div>
+    </div>
+{% endblock %}
